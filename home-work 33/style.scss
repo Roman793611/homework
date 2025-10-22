@@ -1,0 +1,135 @@
+// ==== PLACEHOLDERS ====
+
+// Центрування flex-елементів
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Оформлення кнопок
+%btn-base {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+// Прихований елемент для доступності
+%visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+// ==== MIXINS ====
+
+// Контейнер з фіксованою шириною
+@mixin container {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+// Міксін для адаптивних шрифтів
+@mixin font($size, $weight: 400, $line-height: 1.5) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line-height;
+}
+
+// Міксін для медіа-запитів
+@mixin respond($breakpoint) {
+    @if $breakpoint ==tablet {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==mobile {
+        @media (max-width: 480px) {
+            @content;
+        }
+    }
+}
+@import "../utils/placeholders";
+@import "../utils/mixins";
+
+.site-header {
+    background-color: $color-light;
+    border-bottom: 1px solid $color-border;
+
+    &__container {
+        @include container;
+        @extend %flex-center;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    &__logo {
+        font-family: $font-logo;
+        color: $color-primary;
+        @include font(24px, 700);
+
+        span {
+            color: $color-dark;
+        }
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            color: $color-dark;
+            @include font(16px, 500);
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+    }
+}
+@import "../utils/placeholders";
+@import "../utils/mixins";
+
+.hero-section {
+    background-color: $color-primary;
+    color: $color-light;
+    text-align: center;
+    padding: 120px 20px;
+
+    &__title {
+        @include font(42px, 700);
+        margin-bottom: 30px;
+    }
+
+    &__button {
+        @extend %btn-base;
+        background-color: $color-light;
+        color: $color-primary;
+        box-shadow: $shadow-btn;
+        padding: 12px 30px;
+
+        &:hover {
+            background-color: lighten($color-light, 10%);
+        }
+
+        @include respond(tablet) {
+            padding: 10px 24px;
+            @include font(14px);
+        }
+    }
+}
