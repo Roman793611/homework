@@ -1,0 +1,90 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.hero {
+    background-image: url("../images/hero/hero-mobile@1x.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: $color-light;
+    text-align: center;
+    padding: 120px 20px;
+
+    // 📱 Retina (2x) для мобільного
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url("../images/hero/hero-mobile@2x.jpg");
+    }
+
+    // 💻 Для планшета
+    @include respond(md) {
+        background-image: url("../images/hero/hero-tablet@1x.jpg");
+
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url("../images/hero/hero-tablet@2x.jpg");
+        }
+    }
+
+    // 🖥️ Для десктопа
+    @include respond(lg) {
+        background-image: url("../images/hero/hero-desktop@1x.jpg");
+
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url("../images/hero/hero-desktop@2x.jpg");
+        }
+    }
+
+    &__title {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.3;
+        max-width: 280px;
+        margin: 0 auto;
+
+        @include respond(md) {
+            font-size: 36px;
+            max-width: 480px;
+        }
+
+        @include respond(lg) {
+            font-size: 48px;
+            max-width: 700px;
+        }
+    }
+}
+.footer {
+    background-color: $color-dark;
+    background-image: url("../images/bg/footer-bg@1x.jpg");
+    background-size: cover;
+    background-position: center;
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url("../images/bg/footer-bg@2x.jpg");
+    }
+
+    @include respond(lg) {
+        background-attachment: fixed; // ефект "прикріплення" для десктопа
+    }
+}
+@mixin retina-bg($path-1x, $path-2x) {
+    background-image: url($path-1x);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url($path-2x);
+    }
+}
+.hero {
+    @include retina-bg("../images/hero/hero-mobile@1x.jpg", "../images/hero/hero-mobile@2x.jpg");
+}
