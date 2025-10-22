@@ -1,0 +1,109 @@
+// Головний файл імпортів
+@import "base/variables";
+@import "base/reset";
+@import "components/header";
+@import "components/hero";
+@import "components/footer";
+// Кольори
+$primary-color: #2196f3;
+$text-color: #212121;
+$light-text: #ffffff;
+
+// Шрифти
+$font-main: "Roboto", sans-serif;
+
+// Відступи
+$container-width: 1200px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-main;
+    color: $text-color;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+
+    .container {
+        max-width: $container-width;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: $primary-color;
+
+        span {
+            color: $text-color;
+        }
+    }
+
+    .nav {
+        ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            color: $text-color;
+            font-weight: 500;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
+.hero {
+    background-color: $primary-color;
+    color: $light-text;
+    text-align: center;
+    padding: 120px 20px;
+
+    h1 {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+
+    .btn-primary {
+        background-color: $light-text;
+        color: $primary-color;
+        border: none;
+        padding: 12px 30px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken($light-text, 10%);
+        }
+    }
+}
+.footer {
+    background-color: #2f303a;
+    color: $light-text;
+    text-align: center;
+    padding: 40px 0;
+
+    p {
+        font-size: 14px;
+    }
+}
