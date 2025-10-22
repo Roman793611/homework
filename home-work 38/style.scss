@@ -1,0 +1,93 @@
+// 📱 Підтримка retina-зображень
+@mixin retina-bg($path-1x, $path-2x) {
+    background-image: url($path-1x);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    // Для Retina-дисплеїв
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url($path-2x);
+    }
+}
+
+// 🌍 Міксини для брейкпоінтів (Mobile First)
+@mixin respond($breakpoint) {
+    @if $breakpoint ==sm {
+        @media (min-width: 480px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==md {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==lg {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+}
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.hero {
+    // Мобільна версія
+    @include retina-bg("../images/hero/hero-mobile@1x.jpg",
+        "../images/hero/hero-mobile@2x.jpg"
+    );
+
+    text-align: center;
+    padding: 100px 20px;
+    color: $color-light;
+
+    @include respond(md) {
+        @include retina-bg("../images/hero/hero-tablet@1x.jpg",
+            "../images/hero/hero-tablet@2x.jpg"
+        );
+        padding: 120px 40px;
+    }
+
+    @include respond(lg) {
+        @include retina-bg("../images/hero/hero-desktop@1x.jpg",
+            "../images/hero/hero-desktop@2x.jpg"
+        );
+        padding: 160px 80px;
+    }
+
+    &__title {
+        font-size: 28px;
+        font-weight: 700;
+        max-width: 300px;
+        margin: 0 auto;
+
+        @include respond(md) {
+            font-size: 36px;
+        }
+
+        @include respond(lg) {
+            font-size: 48px;
+        }
+    }
+}
+.footer {
+    @include retina-bg("../images/bg/footer-bg@1x.jpg",
+        "../images/bg/footer-bg@2x.jpg"
+    );
+    color: $color-light;
+    padding: 60px 20px;
+    text-align: center;
+}
+.footer {
+    @include retina-bg("../images/bg/footer-bg@1x.jpg",
+        "../images/bg/footer-bg@2x.jpg"
+    );
+    color: $color-light;
+    padding: 60px 20px;
+    text-align: center;
+}
