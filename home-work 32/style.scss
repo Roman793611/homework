@@ -1,0 +1,88 @@
+// 🎨 Color Palette
+$color-primary: #2196f3;
+$color-secondary: #757575;
+$color-dark: #212121;
+$color-light: #ffffff;
+$color-bg: #2f303a;
+$color-border: #eeeeee;
+
+// 🧱 Typography
+$font-main: "Roboto", sans-serif;
+$font-logo: "Raleway", sans-serif;
+
+// 📏 Sizes
+$container-width: 1200px;
+
+// 🕶 Shadows
+$shadow-btn: 0px 4px 4px rgba(0, 0, 0, 0.15);
+@import "utils/variables";
+.site-header {
+    background-color: $color-light;
+    border-bottom: 1px solid $color-border;
+
+    &__container {
+        max-width: $container-width;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    &__logo {
+        font-family: $font-logo;
+        font-size: 24px;
+        color: $color-primary;
+
+        span {
+            color: $color-dark;
+        }
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            color: $color-dark;
+            font-weight: 500;
+
+            &:hover {
+                color: $color-primary;
+            }
+
+            &--active {
+                color: $color-primary;
+                border-bottom: 2px solid $color-primary;
+            }
+        }
+    }
+}
+.hero-section {
+    background-color: $color-primary;
+    color: $color-light;
+    text-align: center;
+    padding: 120px 20px;
+
+    &__title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+
+    &__button {
+        background-color: $color-light;
+        color: $color-primary;
+        border: none;
+        padding: 12px 30px;
+        font-size: 16px;
+        border-radius: 4px;
+        box-shadow: $shadow-btn;
+        cursor: pointer;
+
+        &:hover {
+            background-color: lighten($color-light, 10%);
+        }
+    }
+}
